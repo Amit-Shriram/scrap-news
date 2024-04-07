@@ -162,7 +162,6 @@ def scrape_news_data():
         imgvalue = item["imgvalue"]
         imgname = item["imgname"]
         credit_name = item["credit_name"]
-        domain = item["domain"]
 
         try:
             r = requests.get(url)
