@@ -137,7 +137,7 @@ list_credit = []
 def postdata():
     url = 'https://flaskkex.pythonanywhere.com/news/postnews'
     headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-    data = {"links": list_link, "headlines": list_headline, "description":list_newsdes, "images":list_img, "credits":list_credit, "domains":list_domain}
+    data = {"links": list_link, "headlines": list_headline, "description":list_newsdes, "images":list_img, "credits":list_credit}
     response = requests.post(url, json=json.dumps(data), headers=headers)
     
     if response.status_code == 200:
