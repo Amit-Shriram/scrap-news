@@ -133,7 +133,6 @@ list_headline = []
 list_newsdes = []
 list_img = []
 list_credit = []
-list_domain = []
 
 def postdata():
     url = 'https://flaskkex.pythonanywhere.com/news/postnews'
@@ -197,7 +196,6 @@ def scrape_news_data():
                 list_newsdes.append(newsdes)
                 list_img.append(img)
                 list_credit.append(credit_name)
-                list_domain.append(domain)
     postdata()
 
 scrape_news_data()
