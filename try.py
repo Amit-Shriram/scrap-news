@@ -14,7 +14,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "article-hero__main",
      "imgname": "src",
-     "credit_name":"nbcnews"},
+     "credit_name":"nbcnews",
+     "domain":"latest"},
     {"url": "https://www.businesstoday.in/",
      "uppertag": "li",
      "upperkey": "class",
@@ -26,7 +27,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "main-img",
      "imgname": "src",
-     "credit_name":"businesstoday"},
+     "credit_name":"businesstoday",
+     "domain":"latest"},
     {"url": "https://www.indiatvnews.com/",
      "uppertag": "h2",
      "upperkey": "class",
@@ -38,7 +40,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "artbigimg row",
      "imgname": "data-original",
-     "credit_name":"indiatvnews"},
+     "credit_name":"indiatvnews",
+     "domain":"latest"},
     {"url": "https://www.moneycontrol.com/news/news-all/",
      "uppertag": "li",
      "upperkey": "class",
@@ -50,7 +53,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "article_image",
      "imgname": "data-src",
-     "credit_name":"moneycontrol"},
+     "credit_name":"moneycontrol",
+     "domain":"latest"},
     {"url": "https://indianexpress.com/",
      "uppertag": "h3",
      "upperkey": "class",
@@ -62,7 +66,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "custom-caption",
      "imgname": "src",
-     "credit_name":"indianexpress"},
+     "credit_name":"indianexpress",
+     "domain":"latest"},
     {"url": "https://www.news18.com/",
      "uppertag": "li",
      "upperkey": "class",
@@ -74,7 +79,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "jsx-926f17af57ac97dc article_byno_limg",
      "imgname": "src",
-     "credit_name":"news18"},
+     "credit_name":"news18",
+     "domain":"latest"},
     {"url": "https://scroll.in/latest/",
      "uppertag": "li",
      "upperkey": "class",
@@ -86,7 +92,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "featured-image",
      "imgname": "src",
-     "credit_name":"scroll"},
+     "credit_name":"scroll",
+     "domain":"latest"},
     {"url": "https://www.livemint.com/",
      "uppertag": "h3",
      "upperkey": "class",
@@ -98,7 +105,8 @@ data_list = [
      "imgkey": "data-vars-mediatype",
      "imgvalue": "image",
      "imgname": "src",
-     "credit_name":"livemint"},
+     "credit_name":"livemint",
+     "domain":"latest"},
     {"url": "https://www.marca.com/en/",     #sports
      "uppertag": "div",
      "upperkey": "class",
@@ -110,7 +118,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "ue-c-article__media-img-container ue-l-article--expand-edge-right-until-tablet ue-l-article--expand-edge-left-until-tablet",
      "imgname": "src",
-     "credit_name":"marca"},
+     "credit_name":"marca",
+     "domain":"latest"},
     {"url": "https://techcrunch.com/",     #tech
      "uppertag": "header",
      "upperkey": "class",
@@ -122,7 +131,8 @@ data_list = [
      "imgkey": "class",
      "imgvalue": "article-container article--post",
      "imgname": "src",
-     "credit_name":"techcrunch"}
+     "credit_name":"techcrunch",
+     "domain":"latest"}
 ]
 
 
@@ -133,11 +143,12 @@ list_headline = []
 list_newsdes = []
 list_img = []
 list_credit = []
+list_domain = []
 
 def postdata():
-    url = 'https://flaskkex.pythonanywhere.com/news/postnews'
+    url = 'https://yashkassa.pythonanywhere.com/news/postnews'
     headers = {'Content-Type': 'application/json', 'Accept':'application/json'}
-    data = {"links": list_link, "headlines": list_headline, "description":list_newsdes, "images":list_img, "credits":list_credit}
+    data = {"links": list_link, "headlines": list_headline, "description":list_newsdes, "images":list_img, "credits":list_credit, "domains":list_domain}
     response = requests.post(url, json=json.dumps(data), headers=headers)
     
     if response.status_code == 200:
@@ -161,6 +172,7 @@ def scrape_news_data():
         imgvalue = item["imgvalue"]
         imgname = item["imgname"]
         credit_name = item["credit_name"]
+        domain = item["domain"]
 
         try:
             r = requests.get(url)
@@ -196,6 +208,7 @@ def scrape_news_data():
                 list_newsdes.append(newsdes)
                 list_img.append(img)
                 list_credit.append(credit_name)
+                list_domain.append(domain)
     postdata()
 
 scrape_news_data()
